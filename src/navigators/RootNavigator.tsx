@@ -3,7 +3,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import TabNavigator from './TabNavigator';
 import HomeScreen from '@screens/HomeScreen/HomeScreen';
-import ProductDetails from '@screens/ProductDetails/ProductDetails';
+import ProductDetailsScreen from '@screens/ProductDetailsScreen/ProductDetailsScreen';
+import CartScreen from '@screens/CartScreen/CartScreen';
 
 export type RootStackParamList = {
   Main: undefined;
@@ -22,7 +23,11 @@ const RootNavigator = () => {
           <RootStack.Screen name="Main" component={TabNavigator} />
         </RootStack.Group>
         <RootStack.Screen name="Home" component={HomeScreen} />
-        <RootStack.Screen name="ProductDetails" component={ProductDetails} />
+        <RootStack.Screen
+          name="ProductDetails"
+          component={ProductDetailsScreen}
+        />
+        <RootStack.Screen name="Cart" component={CartScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

@@ -1,9 +1,9 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import React from 'react';
-import {TEXT_COLOR} from 'src/types/enums';
 import {ProductType} from 'src/types/productTypes';
-import Product from '@components/Product';
+import Product from '@components/Product/Product';
 import {HomeScreenNavigationProp} from '@screens/HomeScreen/HomeScreen';
+import styles from './Products.styles';
 
 type Props = {
   data: ProductType[];
@@ -38,21 +38,3 @@ const Products = ({data, navigation}: Props) => {
 };
 
 export default Products;
-
-const styles = StyleSheet.create({
-  productsContainer: {
-    padding: 15,
-  },
-  productsRecommended: {
-    fontSize: 30,
-    fontWeight: '400',
-    color: TEXT_COLOR.BLACK,
-  },
-  productsListContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginTop: 15,
-  },
-});

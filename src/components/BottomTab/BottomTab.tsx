@@ -1,6 +1,7 @@
-import {Image, ImageSourcePropType, StyleSheet, Text, View} from 'react-native';
+import {Image, ImageSourcePropType, Text, View} from 'react-native';
 import React from 'react';
-import {BACKGROUND_COLOR, TEXT_COLOR} from 'src/types/enums';
+import {BACKGROUND_COLOR} from 'src/types/enums';
+import styles from './BottomTab.styles';
 
 type Props = {
   focused: boolean;
@@ -43,19 +44,3 @@ const BottomTab = ({
 };
 
 export default BottomTab;
-
-const styles = StyleSheet.create({
-  bottomTabContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 2,
-  },
-  bottomTabImage: {
-    width: 24,
-    height: 24,
-  },
-  bottomTabText: {
-    color: TEXT_COLOR.GRAY,
-    fontSize: 12,
-  },
-});

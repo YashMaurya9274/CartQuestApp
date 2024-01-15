@@ -1,13 +1,12 @@
 import {
   StyleProp,
-  StyleSheet,
   Text,
   TextStyle,
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
 import React from 'react';
-import {BACKGROUND_COLOR, TEXT_COLOR} from 'src/types/enums';
+import styles from './PlusIcon.styles';
 
 type Props = {
   containerStyle?: StyleProp<ViewStyle>;
@@ -23,18 +22,3 @@ const PlusIcon = ({containerStyle, plusTextStyle}: Props) => {
 };
 
 export default PlusIcon;
-
-const styles = StyleSheet.create({
-  plusIconContainer: {
-    backgroundColor: BACKGROUND_COLOR.PRIMARY_DARK,
-    height: 20,
-    width: 20,
-    borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  plusText: {
-    color: TEXT_COLOR.WHITE,
-    marginBottom: 2,
-  },
-});

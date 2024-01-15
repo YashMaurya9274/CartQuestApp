@@ -4,11 +4,12 @@ export enum COLOR_CODE {
 }
 
 export enum BACKGROUND_COLOR {
-  WHITE = '#F8F7FB',
+  WHITE = '#FFF',
   BLACK = '#1E222B',
   LIGHT_GRAY = '#F8F9FB',
   DEFAULT = '#ECECEC',
   PRIMARY_DARK = '#153075',
+  GRAY = '#EBEBFB',
 }
 
 export enum TEXT_COLOR {

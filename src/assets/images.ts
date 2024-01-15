@@ -11,6 +11,8 @@ const ImageLinks = {
   chevronLeft: require('./icons/chevronLeft/chevronLeft.png'),
   favouriteOutline: require('./icons/favouriteOutline/favouriteOutline.png'),
   favouriteSolid: require('./icons/favouriteSolid/favouriteSolid.png'),
+  plus: require('./icons/plus/plus.png'),
+  minus: require('./icons/minus/minus.png'),
 };
 
 export default ImageLinks;

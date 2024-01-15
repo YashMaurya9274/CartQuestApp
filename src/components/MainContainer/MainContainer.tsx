@@ -1,12 +1,7 @@
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleProp,
-  StyleSheet,
-  ViewStyle,
-} from 'react-native';
+import {SafeAreaView, StatusBar, StyleProp, ViewStyle} from 'react-native';
 import React, {useLayoutEffect} from 'react';
 import {COLOR_CODE, STATUS_BAR_CONTENT_STYLE} from '../../types/enums';
+import styles from './MainContainer.styles';
 
 type Props = {
   children: React.ReactNode;
@@ -42,9 +37,3 @@ const MainContainer = ({
 };
 
 export default MainContainer;
-
-export const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-  },
-});
