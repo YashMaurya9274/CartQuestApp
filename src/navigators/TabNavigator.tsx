@@ -8,6 +8,7 @@ import {BACKGROUND_COLOR} from '../types/enums';
 import {RootStackParamList} from './RootNavigator';
 import BottomTab from '@components/BottomTab/BottomTab';
 import ImageLinks from '@assets/images';
+import ComingSoonScreen from '@screens/ComingSoonScreen/ComingSoonScreen';
 
 export type TabStackParamList = {
   Home: undefined;
@@ -64,6 +65,7 @@ function TabNavigator() {
               <BottomTab
                 focused={focused}
                 imageSourceOutline={ImageLinks.categoryOutline}
+                imageSourceSolid={ImageLinks.categorySolid}
                 label={route.name}
               />
             );
@@ -89,9 +91,9 @@ function TabNavigator() {
         },
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Categories" component={HomeScreen} />
-      <Tab.Screen name="Favourite" component={HomeScreen} />
-      <Tab.Screen name="More" component={HomeScreen} />
+      <Tab.Screen name="Categories" component={ComingSoonScreen} />
+      <Tab.Screen name="Favourite" component={ComingSoonScreen} />
+      <Tab.Screen name="More" component={ComingSoonScreen} />
     </Tab.Navigator>
   );
 }

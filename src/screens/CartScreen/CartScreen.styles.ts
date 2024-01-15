@@ -28,6 +28,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
   },
+  emptyCartImage: {
+    height: 300,
+    width: 300,
+    resizeMode: 'cover',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 40,
+  },
 });
 
 export default styles;

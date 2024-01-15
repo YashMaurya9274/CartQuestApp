@@ -1,5 +1,6 @@
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import MainContainer from '@components/MainContainer/MainContainer';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@navigators/RootNavigator';
@@ -9,6 +10,13 @@ import BackIcon from '@components/BackIcon/BackIcon';
 import CartItem from '@components/CartItem/CartItem';
 import Subtotal from '@components/Subtotal/Subtotal';
 import styles from './CartScreen.styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  deleteCartItem,
+  selectCartItems,
+  updateCartItems,
+} from 'src/slices/cartItemsSlice';
+import ImageLinks from '@assets/images';
 
 export type CartScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -17,6 +25,63 @@ export type CartScreenNavigationProp = NativeStackNavigationProp<
 
 const CartScreen = () => {
   const navigation = useNavigation<CartScreenNavigationProp>();
+  const cartItems = useSelector(selectCartItems);
+  const [items, setItems] = useState<ProductType[]>([]);
+  const [subTotal, setSubTotal] = useState(0);
+
+  const dispatch = useDispatch();
+
+  const findItemQuantities = (item: ProductType) => {
+    const itemQuanities = cartItems?.filter(itm => itm.id === item.id);
+    return itemQuanities!.length;
+  };
+
+  const createSetFromArray = (array: ProductType[]) => {
+    // @ts-ignore
+    const set = new Set(array.map(JSON.stringify));
+    // @ts-ignore
+    return Array.from(set).map(JSON.parse);
+  };
+
+  const groupCartItems = () => {
+    let tempItems = cartItems;
+
+    tempItems = tempItems!.map(item => {
+      return {...item, quantity: findItemQuantities(item)};
+    });
+
+    const itemsSet = createSetFromArray(tempItems);
+
+    setItems(itemsSet);
+  };
+
+  const calculateSubtotal = () => {
+    let subTotalPrice = 0;
+    cartItems!.forEach(item => {
+      subTotalPrice += item.price;
+    });
+
+    setSubTotal(subTotalPrice);
+  };
+
+  useEffect(() => {
+    if (cartItems !== null) {
+      groupCartItems();
+      calculateSubtotal();
+    }
+  }, [cartItems]);
+
+  const increaseItemQuantity = (item: ProductType) => {
+    const newItem = item;
+    // @ts-ignore
+    delete newItem.quantity;
+    dispatch(updateCartItems(newItem));
+  };
+
+  const dereaseItemQuantity = (item: ProductType) => {
+    const index = cartItems?.findIndex(itm => itm.id === item.id);
+    dispatch(deleteCartItem(index));
+  };
 
   return (
     <MainContainer
@@ -26,22 +91,33 @@ const CartScreen = () => {
       <ScrollView style={styles.cartScreenContainer}>
         <View style={styles.cartTop}>
           <BackIcon />
-          <Text style={styles.cartHeading}>Shopping Cart (5)</Text>
+          <Text style={styles.cartHeading}>
+            Shopping Cart ({cartItems ? cartItems.length : 0})
+          </Text>
         </View>
+
+        {items.length === 0 && (
+          <Image source={ImageLinks.emptyCart} style={styles.emptyCartImage} />
+        )}
 
         <View>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {items.map(item => (
+            <CartItem
+              key={item.id}
+              item={item}
+              onPressIncreaseQuantity={increaseItemQuantity}
+              onPressDecreaseQuantity={dereaseItemQuantity}
+            />
+          ))}
         </View>
 
-        <TouchableOpacity style={styles.editButton}>
-          <Text style={styles.editText}>Edit</Text>
-        </TouchableOpacity>
+        {items.length > 0 && (
+          <TouchableOpacity style={styles.editButton}>
+            <Text style={styles.editText}>Edit</Text>
+          </TouchableOpacity>
+        )}
 
-        <Subtotal />
+        {subTotal > 0 && <Subtotal subTotal={subTotal} />}
       </ScrollView>
     </MainContainer>
   );

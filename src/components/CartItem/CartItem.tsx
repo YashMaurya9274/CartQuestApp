@@ -4,38 +4,51 @@ import styles from './CartItem.styles';
 import IconButton from '@components/IconButton/IconButton';
 import ImageLinks from '@assets/images';
 
-const CartItem = () => {
+type Props = {
+  item: ProductType;
+  onPressIncreaseQuantity: (item: ProductType) => void;
+  onPressDecreaseQuantity: (item: ProductType) => void;
+};
+
+const CartItem = ({
+  item,
+  onPressIncreaseQuantity,
+  onPressDecreaseQuantity,
+}: Props) => {
   return (
     <View>
       <View style={styles.cartItemContainer}>
         {/* // Image */}
         <Image
           source={{
-            uri: 'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
+            uri: item.thumbnail,
           }}
           style={styles.cartItemImage}
         />
 
         {/* // Details */}
         <View style={styles.cartItemDetailsContainer}>
-          <Text style={styles.cartItemName}>Bananas</Text>
-          <Text style={styles.cartItemPrice}>$7.90</Text>
+          <Text style={styles.cartItemName}>{item.title}</Text>
+          <Text style={styles.cartItemPrice}>${item.price.toString()}</Text>
         </View>
 
         {/* // Quantity */}
         <View style={styles.cartItemQuanityContainer}>
           <IconButton
             imageSource={ImageLinks.minus}
-            onPress={() => {}}
+            onPress={() => onPressDecreaseQuantity(item)}
             imageStyle={styles.minusImage}
             iconButtonContainer={{
               padding: 8,
             }}
           />
-          <Text>2</Text>
+          <Text>
+            {/* @ts-ignore */}
+            {item.quantity}
+          </Text>
           <IconButton
             imageSource={ImageLinks.plus}
-            onPress={() => {}}
+            onPress={() => onPressIncreaseQuantity(item)}
             imageStyle={styles.plusImage}
             iconButtonContainer={{
               padding: 8,

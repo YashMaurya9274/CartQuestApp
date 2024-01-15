@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   productImage: {
     width: '100%',
     height: 120,
-    resizeMode: 'cover',
+    resizeMode: 'stretch',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
   },

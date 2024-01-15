@@ -2,6 +2,7 @@ const ImageLinks = {
   homeOutline: require('./icons/homeOutline/homeOutline.png'),
   homeSolid: require('./icons/homeSolid/homeSolid.png'),
   categoryOutline: require('./icons/categoryOutline/categoryOutline.png'),
+  categorySolid: require('./icons/categorySolid/categorySolid.png'),
   heartOutline: require('./icons/heartOutline/heartOutline.png'),
   moreVertical: require('./icons/moreVertical/moreVertical.png'),
   bag: require('./icons/bag/bag.png'),
@@ -13,6 +14,8 @@ const ImageLinks = {
   favouriteSolid: require('./icons/favouriteSolid/favouriteSolid.png'),
   plus: require('./icons/plus/plus.png'),
   minus: require('./icons/minus/minus.png'),
+  comingSoon: require('./images/comingSoon/comingSoon.png'),
+  emptyCart: require('./images/emptyCart/emptyCart.png'),
 };
 
 export default ImageLinks;

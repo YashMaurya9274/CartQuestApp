@@ -12,6 +12,8 @@ import ImageLinks from '@assets/images';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '@navigators/RootNavigator';
 import styles from './CartIcon.styles';
+import {useSelector} from 'react-redux';
+import {selectCartItems} from 'src/slices/cartItemsSlice';
 
 type Props = {
   containerStyle?: StyleProp<ViewStyle>;
@@ -20,6 +22,7 @@ type Props = {
 
 const CartIcon = ({cartIconStyle, containerStyle}: Props) => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const cartItems = useSelector(selectCartItems);
 
   return (
     <TouchableOpacity
@@ -30,9 +33,11 @@ const CartIcon = ({cartIconStyle, containerStyle}: Props) => {
         style={[styles.cartImage, cartIconStyle]}
       />
 
-      <View style={styles.cartNumberContainer}>
-        <Text style={styles.cartNumerText}>3</Text>
-      </View>
+      {cartItems && cartItems.length > 0 && (
+        <View style={styles.cartNumberContainer}>
+          <Text style={styles.cartNumerText}>{cartItems.length}</Text>
+        </View>
+      )}
     </TouchableOpacity>
   );
 };

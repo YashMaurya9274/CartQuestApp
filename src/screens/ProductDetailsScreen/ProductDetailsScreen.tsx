@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {ScrollView, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MainContainer from '@components/MainContainer/MainContainer';
 import {RootStackParamList} from '@navigators/RootNavigator';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {
   BACKGROUND_COLOR,
   STATUS_BAR_CONTENT_STYLE,
@@ -14,14 +15,64 @@ import BackIcon from '@components/BackIcon/BackIcon';
 import ImageCarousel from '@components/ImageCarousel/ImageCarousel';
 import styles from './ProductDetailsScreen.styles';
 import PillButton from '@components/PillButton/PillButton';
+import {updateCartItems} from 'src/slices/cartItemsSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  addFavouriteItems,
+  deleteFavouriteItem,
+  selectFavouriteItems,
+} from 'src/slices/favouritesSlice';
 
 export type ProductDetailsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'ProductDetails'
 >;
 
+type ProductDetailsRouteProp = RouteProp<RootStackParamList, 'ProductDetails'>;
+
 const ProductDetailsScreen = () => {
   const navigation = useNavigation<ProductDetailsScreenNavigationProp>();
+  const route = useRoute<ProductDetailsRouteProp>();
+  const {product} = route.params;
+  const dispatch = useDispatch();
+  const favouriteItems = useSelector(selectFavouriteItems);
+
+  const [favourite, setFavourite] = useState(false);
+
+  const checkFavourite = (id: number) => {
+    if (favouriteItems && favouriteItems.includes(id)) {
+      return true;
+    }
+    return false;
+  };
+
+  const discountPrice = (
+    product.price *
+    (product.discountPercentage / 100)
+  ).toFixed(2);
+
+  useEffect(() => {
+    setFavourite(checkFavourite(product.id));
+  }, [favouriteItems]);
+
+  const addToFavourite = () => {
+    dispatch(addFavouriteItems(product.id));
+  };
+
+  const removeFromFavourite = () => {
+    if (favouriteItems) {
+      const index = favouriteItems.indexOf(product.id);
+      dispatch(deleteFavouriteItem(index));
+    }
+  };
+
+  const addOrRemoveFavourite = () => {
+    if (favourite) {
+      removeFromFavourite();
+    } else {
+      addToFavourite();
+    }
+  };
 
   return (
     <MainContainer
@@ -40,25 +91,31 @@ const ProductDetailsScreen = () => {
           />
         </View>
 
-        <Text style={styles.productName}>iPhone 9</Text>
+        <Text style={styles.productName}>{product.title}</Text>
 
-        <Text style={styles.productBrand}>Apple</Text>
+        <Text style={styles.productBrand}>{product.brand}</Text>
 
         {/* TODO: Stars and Review */}
 
         <View style={styles.productImagesContainer}>
-          <ImageCarousel />
+          <ImageCarousel
+            images={product.images}
+            favourite={favourite}
+            addOrRemoveFavourite={addOrRemoveFavourite}
+          />
         </View>
 
         <View style={styles.priceContainer}>
-          <Text style={styles.productPrice}>$34.70</Text>
-          <Text style={styles.productDiscount}>$22.04 OFF</Text>
+          <Text style={styles.productPrice}>${product.price.toString()}</Text>
+          <Text style={styles.productDiscount}>
+            ${discountPrice.toString()} OFF
+          </Text>
         </View>
 
         <View style={styles.buttons}>
           <PillButton
             title="Add to Cart"
-            onPress={() => {}}
+            onPress={() => dispatch(updateCartItems(product))}
             buttonContainerStyle={styles.addToCartButton}
             titleStyle={styles.addToCartText}
           />
@@ -72,10 +129,7 @@ const ProductDetailsScreen = () => {
 
         <View style={styles.productDetails}>
           <Text style={styles.productDetailsTitle}>Details</Text>
-          <Text style={styles.productDetailsDesc}>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-            Nullam quis risus eget urna mollis ornare vel eu leo.
-          </Text>
+          <Text style={styles.productDetailsDesc}>{product.description}</Text>
         </View>
       </ScrollView>
     </MainContainer>

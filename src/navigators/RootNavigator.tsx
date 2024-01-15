@@ -9,7 +9,9 @@ import CartScreen from '@screens/CartScreen/CartScreen';
 export type RootStackParamList = {
   Main: undefined;
   Home: undefined;
-  ProductDetails: undefined;
+  ProductDetails: {
+    product: ProductType;
+  };
   Cart: undefined;
 };
 

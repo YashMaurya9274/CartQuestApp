@@ -11,11 +11,14 @@ import styles from './PlusIcon.styles';
 type Props = {
   containerStyle?: StyleProp<ViewStyle>;
   plusTextStyle?: StyleProp<TextStyle>;
+  onPress: () => void;
 };
 
-const PlusIcon = ({containerStyle, plusTextStyle}: Props) => {
+const PlusIcon = ({containerStyle, plusTextStyle, onPress}: Props) => {
   return (
-    <TouchableOpacity style={[styles.plusIconContainer, containerStyle]}>
+    <TouchableOpacity
+      style={[styles.plusIconContainer, containerStyle]}
+      onPress={onPress}>
       <Text style={[styles.plusText, plusTextStyle]}>+</Text>
     </TouchableOpacity>
   );

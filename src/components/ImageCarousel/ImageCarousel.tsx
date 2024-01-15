@@ -7,48 +7,27 @@ import IconButton from '@components/IconButton/IconButton';
 import ImageLinks from '@assets/images';
 import styles from './ImageCarousel.styles';
 
-const data = [
-  {
-    id: '1',
-    image:
-      'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
-  },
-  {
-    id: '2',
-    image:
-      'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
-  },
-  {
-    id: '3',
-    image:
-      'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
-  },
-  {
-    id: '4',
-    image:
-      'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
-  },
-  {
-    id: '5',
-    image:
-      'https://cdn.britannica.com/60/182360-050-CD8878D6/Avengers-Age-of-Ultron-Joss-Whedon.jpg',
-  },
-];
+type Props = {
+  images: string[];
+  favourite: boolean;
+  addOrRemoveFavourite: () => void;
+};
 
-const ImageCarousel = () => {
+const ImageCarousel = ({images, favourite, addOrRemoveFavourite}: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   //   @ts-ignore
   const carouselRef = useRef<Carousel>();
 
-  const renderItem = ({item}: any) => (
+  const renderItem = ({item}: {item: string}) => (
     <Image
+      key={item}
       source={{
-        uri: item.image,
+        uri: item,
       }}
       style={{
-        height: 200,
+        height: 250,
       }}
-      resizeMode="cover"
+      resizeMode="stretch"
     />
   );
 
@@ -56,7 +35,7 @@ const ImageCarousel = () => {
     <View style={styles.imageCarouselContainer}>
       <Carousel
         ref={carouselRef}
-        data={data}
+        data={images}
         renderItem={renderItem}
         sliderWidth={400}
         itemWidth={400}
@@ -66,14 +45,16 @@ const ImageCarousel = () => {
       />
 
       <IconButton
-        imageSource={ImageLinks.favouriteOutline}
-        onPress={() => {}}
+        imageSource={
+          favourite ? ImageLinks.favouriteSolid : ImageLinks.favouriteOutline
+        }
+        onPress={addOrRemoveFavourite}
         iconButtonContainer={styles.favouriteIconContainer}
         imageStyle={styles.favouriteIcon}
       />
 
       <View style={styles.carouselIndicatorContainer}>
-        {[...Array(data.length)].map((_, index) => (
+        {[...Array(images.length)].map((_, index) => (
           <TouchableOpacity
             style={[
               styles.carouselIndicator,
