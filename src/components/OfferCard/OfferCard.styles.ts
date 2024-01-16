@@ -18,18 +18,21 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: TEXT_COLOR.WHITE,
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: '400',
+    fontFamily: 'Manrope',
   },
   subHeading: {
     color: TEXT_COLOR.WHITE,
     fontSize: 24,
     fontWeight: '600',
+    fontFamily: 'Manrope-Bold',
   },
   description: {
     color: TEXT_COLOR.WHITE,
     fontSize: 12,
     fontWeight: '300',
+    fontFamily: 'Manrope',
   },
 });
 

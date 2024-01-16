@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     color: TEXT_COLOR.LIGHT_GRAY,
     fontSize: 22,
     fontWeight: '600',
+    fontFamily: 'Manrope',
   },
   homeBottom: {
     display: 'flex',

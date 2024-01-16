@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20,
   },
+  buttonTextStyle: {
+    fontFamily: 'Manrope-SemiBold',
+  },
 });
 
 export default styles;

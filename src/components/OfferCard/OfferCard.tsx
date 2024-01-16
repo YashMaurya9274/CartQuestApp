@@ -21,7 +21,7 @@ const OfferCard = ({bgColor}: Props) => {
       <Image source={ImageLinks.galleryOutline} style={styles.offerCardImage} />
 
       <View>
-        <Text style={styles.heading}>{STRINGS.GET_50_OFF}</Text>
+        <Text style={styles.heading}>{STRINGS.GET}</Text>
         <Text style={styles.subHeading}>{STRINGS.OFF_50}</Text>
         <Text style={styles.description}>{STRINGS.ON_FIRST_3_ORDER}</Text>
       </View>

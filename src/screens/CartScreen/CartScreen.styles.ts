@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '400',
     color: TEXT_COLOR.BLACK,
+    fontFamily: 'Manrope-Regular',
   },
   editButton: {
     marginLeft: 'auto',
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
     color: COLOR_CODE.PRIMARY,
     fontSize: 12,
     fontWeight: '500',
+    fontFamily: 'Manrope-SemiBold',
   },
   emptyCartImage: {
     height: 300,

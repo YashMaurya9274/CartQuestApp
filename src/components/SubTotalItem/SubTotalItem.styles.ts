@@ -11,11 +11,13 @@ const styles = StyleSheet.create({
     color: TEXT_COLOR.GRAY_1,
     fontSize: 14,
     fontWeight: '400',
+    fontFamily: 'Manrope-Medium',
   },
   price: {
     color: TEXT_COLOR.BLACK,
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: 'Manrope-SemiBold',
   },
 });
 

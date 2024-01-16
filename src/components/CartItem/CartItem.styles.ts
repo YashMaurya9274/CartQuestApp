@@ -23,11 +23,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     color: TEXT_COLOR.BLACK,
+    fontFamily: 'Manrope-SemiBold',
+  },
+  itemQuantity: {
+    color: TEXT_COLOR.BLACK,
+    fontFamily: 'Manrope-Regular',
   },
   cartItemPrice: {
     fontSize: 14,
     fontWeight: '400',
     color: TEXT_COLOR.BLACK,
+    fontFamily: 'Manrope-Regular',
   },
   cartItemQuanityContainer: {
     display: 'flex',

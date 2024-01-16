@@ -1,11 +1,11 @@
 const STRINGS = {
-  GET_50_OFF: 'Get 50% Off',
+  GET: 'Get',
   OFF_50: '50% OFF',
   ON_FIRST_3_ORDER: 'On first 03 order',
   RECOMMENDED: 'Recommended',
   SEARCH_PRODUCTS_ON_STORE: 'Search Products or store',
   SUBTOTAL: 'Subtotal',
-  DELIVERY: 'Subtotal',
+  DELIVERY: 'Delivery',
   TOTAL: 'Total',
   PROCEED_TO_CHECKOUT: 'Proceed to Checkout',
   SHOPPING_CART: 'Shopping Cart',

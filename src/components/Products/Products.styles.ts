@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '400',
     color: TEXT_COLOR.BLACK,
+    fontFamily: 'Manrope',
   },
   productsListContainer: {
     display: 'flex',

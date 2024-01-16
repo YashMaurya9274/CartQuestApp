@@ -42,7 +42,7 @@ const CartItem = ({
               padding: 8,
             }}
           />
-          <Text>
+          <Text style={styles.itemQuantity}>
             {/* @ts-ignore */}
             {item.quantity}
           </Text>

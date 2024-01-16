@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 1,
     borderRadius: 100,
+    fontFamily: 'Manrope',
   },
 });
 

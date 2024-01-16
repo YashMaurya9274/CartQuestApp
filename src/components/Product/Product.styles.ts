@@ -31,12 +31,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: TEXT_COLOR.BLACK,
     fontWeight: '600',
+    fontFamily: 'Manrope-SemiBold',
   },
   productName: {
     fontSize: 12,
     color: TEXT_COLOR.GRAY_1,
     fontWeight: '400',
     marginBottom: 5,
+    fontFamily: 'Manrope',
   },
   favouriteIconContainer: {
     position: 'absolute',

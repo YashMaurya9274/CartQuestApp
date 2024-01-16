@@ -19,6 +19,7 @@ const Subtotal = ({subTotal}: Props) => {
       <PillButton
         buttonContainerStyle={styles.buttonStyle}
         title={STRINGS.PROCEED_TO_CHECKOUT}
+        titleStyle={styles.buttonTextStyle}
         onPress={() => {}}
       />
     </View>

@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     opacity: 0.5,
     color: TEXT_COLOR.LIGHT_GRAY,
+    fontFamily: 'Manrope',
   },
   lineTwoContainer: {
     display: 'flex',
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     color: TEXT_COLOR.LIGHT_GRAY,
+    fontFamily: 'Manrope',
   },
   optionCardChevronDown: {
     height: 8,
