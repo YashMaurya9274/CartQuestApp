@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {StyleProp, View, ViewStyle} from 'react-native';
 import React from 'react';
 import SubTotalItem from '@components/SubTotalItem/SubTotalItem';
 import PillButton from '@components/PillButton/PillButton';
@@ -7,11 +7,12 @@ import STRINGS from 'src/constants/strings';
 
 type Props = {
   subTotal: number;
+  subTotalContainerStyle?: StyleProp<ViewStyle>;
 };
 
-const Subtotal = ({subTotal}: Props) => {
+const Subtotal = ({subTotal, subTotalContainerStyle}: Props) => {
   return (
-    <View style={styles.subTotalContainer}>
+    <View style={[styles.subTotalContainer, subTotalContainerStyle]}>
       <SubTotalItem name={STRINGS.SUBTOTAL} price={subTotal} />
       <SubTotalItem name={STRINGS.DELIVERY} price={2.0} />
       <SubTotalItem name={STRINGS.TOTAL} price={subTotal + 2} />

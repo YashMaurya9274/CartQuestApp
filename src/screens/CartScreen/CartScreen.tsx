@@ -118,7 +118,15 @@ const CartScreen = () => {
           </TouchableOpacity>
         )}
 
-        {subTotal > 0 && <Subtotal subTotal={subTotal} />}
+        {subTotal > 0 && (
+          <Subtotal
+            subTotal={subTotal}
+            // eslint-disable-next-line react-native/no-inline-styles
+            subTotalContainerStyle={{
+              marginTop: items?.length! <= 2 ? 100 : 40,
+            }}
+          />
+        )}
       </ScrollView>
     </MainContainer>
   );
