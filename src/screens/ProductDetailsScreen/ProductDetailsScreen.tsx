@@ -76,6 +76,11 @@ const ProductDetailsScreen = () => {
     }
   };
 
+  const handleBuyNow = () => {
+    dispatch(updateCartItems(product));
+    navigation.navigate('Cart');
+  };
+
   return (
     <MainContainer
       navigation={navigation}
@@ -130,7 +135,7 @@ const ProductDetailsScreen = () => {
             title={STRINGS.BUY_NOW}
             buttonContainerStyle={styles.buyNowButton}
             titleStyle={styles.buyNowText}
-            onPress={() => {}}
+            onPress={handleBuyNow}
           />
         </View>
 
