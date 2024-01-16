@@ -17,6 +17,7 @@ import {
   updateCartItems,
 } from 'src/slices/cartItemsSlice';
 import ImageLinks from '@assets/images';
+import STRINGS from 'src/constants/strings';
 
 export type CartScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -92,7 +93,7 @@ const CartScreen = () => {
         <View style={styles.cartTop}>
           <BackIcon />
           <Text style={styles.cartHeading}>
-            Shopping Cart ({cartItems ? cartItems.length : 0})
+            {STRINGS.SHOPPING_CART} ({cartItems ? cartItems.length : 0})
           </Text>
         </View>
 
@@ -113,7 +114,7 @@ const CartScreen = () => {
 
         {items.length > 0 && (
           <TouchableOpacity style={styles.editButton}>
-            <Text style={styles.editText}>Edit</Text>
+            <Text style={styles.editText}>{STRINGS.EDIT}</Text>
           </TouchableOpacity>
         )}
 

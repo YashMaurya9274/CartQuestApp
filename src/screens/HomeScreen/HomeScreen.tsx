@@ -11,6 +11,8 @@ import OfferCard from '@components/OfferCard/OfferCard';
 import Products from '@components/Products/Products';
 import styles from './HomeScreen.styles';
 import {getProducts} from 'src/lib/products.helper';
+import STRINGS from 'src/constants/strings';
+import {COLOR_CODE} from 'src/types/enums';
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -40,17 +42,17 @@ const HomeScreen = () => {
         <View style={styles.homeTop}>
           <View style={styles.homeTopNameContainer}>
             <Text style={styles.homeTopName}>Hello, Rahul</Text>
-            <CartIcon />
+            <CartIcon borderColor={COLOR_CODE.PRIMARY} />
           </View>
 
           <SearchBar />
 
           <View style={styles.homeBottom}>
             <OptionCard
-              textOne="Delivery To"
-              textTwo="Green Way 3000, Sylhet"
+              textOne={STRINGS.DELIVERY_TO}
+              textTwo={STRINGS.GREEN_WAY}
             />
-            <OptionCard textOne="Within" textTwo="1 Hour" />
+            <OptionCard textOne={STRINGS.WITHIN} textTwo={STRINGS.HOUR_1} />
           </View>
         </View>
 

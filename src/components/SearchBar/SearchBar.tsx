@@ -3,6 +3,7 @@ import React from 'react';
 import {TEXT_COLOR} from 'src/types/enums';
 import ImageLinks from '@assets/images';
 import styles from './SearchBar.styles';
+import STRINGS from 'src/constants/strings';
 
 const SearchBar = () => {
   return (
@@ -11,7 +12,7 @@ const SearchBar = () => {
 
       <TextInput
         style={styles.searchInput}
-        placeholder="Search Products or store"
+        placeholder={STRINGS.SEARCH_PRODUCTS_ON_STORE}
         placeholderTextColor={TEXT_COLOR.GRAY}
       />
     </View>

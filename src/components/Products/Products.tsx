@@ -9,6 +9,7 @@ import {
   deleteFavouriteItem,
   selectFavouriteItems,
 } from 'src/slices/favouritesSlice';
+import STRINGS from 'src/constants/strings';
 
 type Props = {
   data: ProductType[];
@@ -39,7 +40,7 @@ const Products = ({data, navigation}: Props) => {
 
   return (
     <View style={styles.productsContainer}>
-      <Text style={styles.productsRecommended}>Recommended</Text>
+      <Text style={styles.productsRecommended}>{STRINGS.RECOMMENDED}</Text>
 
       {/* @ts-ignore */}
       <FlatList

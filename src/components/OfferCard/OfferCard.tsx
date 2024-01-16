@@ -3,6 +3,7 @@ import React from 'react';
 import {COLOR_CODE} from 'src/types/enums';
 import ImageLinks from '@assets/images';
 import styles from './OfferCard.styles';
+import STRINGS from 'src/constants/strings';
 
 type Props = {
   bgColor?: string;
@@ -20,9 +21,9 @@ const OfferCard = ({bgColor}: Props) => {
       <Image source={ImageLinks.galleryOutline} style={styles.offerCardImage} />
 
       <View>
-        <Text style={styles.heading}>Get</Text>
-        <Text style={styles.subHeading}>50% OFF</Text>
-        <Text style={styles.description}>On first 03 order</Text>
+        <Text style={styles.heading}>{STRINGS.GET_50_OFF}</Text>
+        <Text style={styles.subHeading}>{STRINGS.OFF_50}</Text>
+        <Text style={styles.description}>{STRINGS.ON_FIRST_3_ORDER}</Text>
       </View>
     </TouchableOpacity>
   );

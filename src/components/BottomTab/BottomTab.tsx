@@ -8,6 +8,7 @@ type Props = {
   imageSourceOutline: ImageSourcePropType;
   imageSourceSolid?: ImageSourcePropType;
   label: string;
+  imageTwoColor?: string;
 };
 
 const BottomTab = ({
@@ -15,7 +16,16 @@ const BottomTab = ({
   imageSourceOutline,
   imageSourceSolid,
   label,
+  imageTwoColor,
 }: Props) => {
+  const getImageFocusColor = () => {
+    if (focused) {
+      if (imageTwoColor) {
+        return imageTwoColor;
+      }
+    }
+  };
+
   return (
     <View
       style={[
@@ -35,7 +45,12 @@ const BottomTab = ({
       ]}>
       <Image
         source={focused ? imageSourceSolid : imageSourceOutline}
-        style={styles.bottomTabImage}
+        style={[
+          styles.bottomTabImage,
+          {
+            tintColor: getImageFocusColor(),
+          },
+        ]}
       />
 
       {!focused && <Text style={styles.bottomTabText}>{label}</Text>}

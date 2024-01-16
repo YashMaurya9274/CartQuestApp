@@ -22,6 +22,8 @@ import {
   deleteFavouriteItem,
   selectFavouriteItems,
 } from 'src/slices/favouritesSlice';
+import StarRating from '@components/StarRating/StarRating';
+import STRINGS from 'src/constants/strings';
 
 export type ProductDetailsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -36,8 +38,8 @@ const ProductDetailsScreen = () => {
   const {product} = route.params;
   const dispatch = useDispatch();
   const favouriteItems = useSelector(selectFavouriteItems);
-
   const [favourite, setFavourite] = useState(false);
+  const reviews = 110;
 
   const checkFavourite = (id: number) => {
     if (favouriteItems && favouriteItems.includes(id)) {
@@ -95,7 +97,12 @@ const ProductDetailsScreen = () => {
 
         <Text style={styles.productBrand}>{product.brand}</Text>
 
-        {/* TODO: Stars and Review */}
+        <View style={styles.ratingAndReviewContainer}>
+          <StarRating rating={product.rating} />
+          <Text style={styles.reviews}>
+            {reviews} {STRINGS.REVIEWS}
+          </Text>
+        </View>
 
         <View style={styles.productImagesContainer}>
           <ImageCarousel
@@ -108,19 +115,19 @@ const ProductDetailsScreen = () => {
         <View style={styles.priceContainer}>
           <Text style={styles.productPrice}>${product.price.toString()}</Text>
           <Text style={styles.productDiscount}>
-            ${discountPrice.toString()} OFF
+            ${discountPrice.toString()} {STRINGS.OFF}
           </Text>
         </View>
 
         <View style={styles.buttons}>
           <PillButton
-            title="Add to Cart"
+            title={STRINGS.ADD_TO_CART}
             onPress={() => dispatch(updateCartItems(product))}
             buttonContainerStyle={styles.addToCartButton}
             titleStyle={styles.addToCartText}
           />
           <PillButton
-            title="Buy Now"
+            title={STRINGS.BUY_NOW}
             buttonContainerStyle={styles.buyNowButton}
             titleStyle={styles.buyNowText}
             onPress={() => {}}
@@ -128,7 +135,7 @@ const ProductDetailsScreen = () => {
         </View>
 
         <View style={styles.productDetails}>
-          <Text style={styles.productDetailsTitle}>Details</Text>
+          <Text style={styles.productDetailsTitle}>{STRINGS.DETAILS}</Text>
           <Text style={styles.productDetailsDesc}>{product.description}</Text>
         </View>
       </ScrollView>

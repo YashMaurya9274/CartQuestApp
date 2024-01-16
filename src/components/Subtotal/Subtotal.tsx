@@ -3,6 +3,7 @@ import React from 'react';
 import SubTotalItem from '@components/SubTotalItem/SubTotalItem';
 import PillButton from '@components/PillButton/PillButton';
 import styles from './Subtotal.styles';
+import STRINGS from 'src/constants/strings';
 
 type Props = {
   subTotal: number;
@@ -11,13 +12,13 @@ type Props = {
 const Subtotal = ({subTotal}: Props) => {
   return (
     <View style={styles.subTotalContainer}>
-      <SubTotalItem name="Subtotal" price={subTotal} />
-      <SubTotalItem name="Delivery" price={2.0} />
-      <SubTotalItem name="Total" price={subTotal + 2} />
+      <SubTotalItem name={STRINGS.SUBTOTAL} price={subTotal} />
+      <SubTotalItem name={STRINGS.DELIVERY} price={2.0} />
+      <SubTotalItem name={STRINGS.TOTAL} price={subTotal + 2} />
 
       <PillButton
         buttonContainerStyle={styles.buttonStyle}
-        title="Proceed to Checkout"
+        title={STRINGS.PROCEED_TO_CHECKOUT}
         onPress={() => {}}
       />
     </View>

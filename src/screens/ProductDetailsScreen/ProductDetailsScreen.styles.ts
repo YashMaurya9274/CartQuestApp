@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: TEXT_COLOR.BLACK,
     marginLeft: 20,
+    maxWidth: 320,
   },
   productBrand: {
     fontSize: 50,
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     color: TEXT_COLOR.BLACK,
     marginLeft: 20,
     marginTop: -10,
+    maxWidth: 320,
   },
   productImagesContainer: {
     marginTop: 15,
@@ -65,6 +67,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
     fontWeight: '600',
+  },
+  ratingAndReviewContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'center',
+    paddingLeft: 20,
+    marginTop: 10,
+  },
+  reviews: {
+    fontSize: 14,
+    fontWeight: '400',
   },
   addToCartButton: {
     backgroundColor: BACKGROUND_COLOR.WHITE,

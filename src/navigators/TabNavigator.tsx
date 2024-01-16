@@ -75,7 +75,9 @@ function TabNavigator() {
               <BottomTab
                 focused={focused}
                 imageSourceOutline={ImageLinks.heartOutline}
+                imageSourceSolid={ImageLinks.heartOutline}
                 label={route.name}
+                imageTwoColor="orange"
               />
             );
           }
@@ -84,7 +86,9 @@ function TabNavigator() {
               <BottomTab
                 focused={focused}
                 imageSourceOutline={ImageLinks.moreVertical}
+                imageSourceSolid={ImageLinks.moreVertical}
                 label={route.name}
+                imageTwoColor="orange"
               />
             );
           }

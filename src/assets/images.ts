@@ -16,6 +16,8 @@ const ImageLinks = {
   minus: require('./icons/minus/minus.png'),
   comingSoon: require('./images/comingSoon/comingSoon.png'),
   emptyCart: require('./images/emptyCart/emptyCart.png'),
+  starFull: require('./icons/star/starFull.png'),
+  starHalf: require('./icons/star/starHalf.png'),
 };
 
 export default ImageLinks;
