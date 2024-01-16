@@ -123,7 +123,7 @@ const CartScreen = () => {
             subTotal={subTotal}
             // eslint-disable-next-line react-native/no-inline-styles
             subTotalContainerStyle={{
-              marginTop: items?.length! <= 2 ? 100 : 40,
+              marginTop: items?.length! <= 2 ? 150 : 40,
             }}
           />
         )}
