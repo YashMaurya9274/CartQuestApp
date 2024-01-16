@@ -89,6 +89,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('cart_quest.keystore')
+            storePassword 'yash1234'
+            keyAlias 'cart_quest'
+            keyPassword 'yash1234'
+        }
     }
     buildTypes {
         debug {
